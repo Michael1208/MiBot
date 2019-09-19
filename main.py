@@ -25,3 +25,15 @@ async def warn(ctx,user:discord.Member,count,*,reason="No Reason Provided"):
      # find server data file
     # if inexistent, then go and create it.
     # log the warn count based on a json obj {userid:warncount}
+    
+@bot.command()
+@commands.check(boost)
+async def avatar(ctx, member: discord.Member):
+	embed = discord.Embed(colour=member.color, timestamp=ctx.message.created_at)
+	embed.set_author(name=f"Avatar Of {member}")
+	embed.set_image(url=member.avatar_url)
+	await ctx.send(embed=embed)	
+@avatar.error
+async def avatar_error(ctx, error):
+    if isinstance(error, commands.CheckFailure):
+        await ctx.send("Premium Required Type n!info")
