@@ -13,10 +13,12 @@ async def on_ready():
     print("MiBot Premium has started!")
 
 @bot.command(pass_context=True)
-@commands.has_permissions(manage_guild=True)
-async def warn(ctx,user:discord.Member,count,*,reason="No Reason Provided"):
-    # get user current warnings
-    try:
+async def warn(ctx,user:discord.Member,count,*,reason=None):
+
+if reason is None:
+    reason = "No reason provided"
+
+try:
       # add warning
    except:
       await ctx.send("Count is Invalid.")
