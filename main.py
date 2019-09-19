@@ -27,7 +27,6 @@ async def warn(ctx,user:discord.Member,count,*,reason="No Reason Provided"):
     # log the warn count based on a json obj {userid:warncount}
     
 @bot.command()
-@commands.check(boost)
 async def avatar(ctx, member: discord.Member):
 	embed = discord.Embed(colour=member.color, timestamp=ctx.message.created_at)
 	embed.set_author(name=f"Avatar Of {member}")
