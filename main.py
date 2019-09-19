@@ -40,7 +40,7 @@ async def avatar_error(ctx, error):
 @bot.command()
 async def ping(ctx):
     start = time.monotonic()
-    embed = discord.Embed(title="Neon Premium's Ping!", color=0x0084FD)
+    embed = discord.Embed(title="MiBot Premium's Ping!", color=0x0084FD)
     embed.add_field(name="Ping Latency", value="{} ms".format(int(ctx.bot.latency*1000)))
     await ctx.send(embed=embed)
 @ping.error
