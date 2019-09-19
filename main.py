@@ -36,3 +36,14 @@ async def avatar(ctx, member: discord.Member):
 async def avatar_error(ctx, error):
     if isinstance(error, commands.CheckFailure):
         await ctx.send("Premium Required Type n!info")
+	
+@bot.command()
+async def ping(ctx):
+    start = time.monotonic()
+    embed = discord.Embed(title="Neon Premium's Ping!", color=0x0084FD)
+    embed.add_field(name="Ping Latency", value="{} ms".format(int(ctx.bot.latency*1000)))
+    await ctx.send(embed=embed)
+@ping.error
+async def ping_error(ctx, error):
+    if isinstance(error, commands.CheckFailure):
+        await ctx.send("Premium Required Type n!info")
