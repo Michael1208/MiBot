@@ -51,8 +51,7 @@ async def ping_error(ctx, error):
     if isinstance(error, commands.CheckFailure):
         await ctx.send("Premium Required Type n!info")
 
-@bot.command()  
-@commands.check(boost)  
+@bot.command() 
 async def serverinfo(ctx):
     guild = ctx.message.guild
     online = len([m.status for m in guild.members if m.status == discord.Status.online or m.status == discord.Status.idle])
@@ -78,7 +77,7 @@ async def serverinfo_error(ctx, error):
         await ctx.send("Premium Required Type n!info")   
 	
 @bot.command()
-@has_permissions(ban_members=True)
+@commands.has_permissions(ban_members=True)
 async def ban(ctx, member:discord.Member=None, *, reason=None):
     if member is None:
         await ctx.send("Please mention a user to ban")
@@ -91,7 +90,7 @@ async def purge(ctx, amount=5):
 	await ctx.channel.purge(limit=amount)
 	
 @bot.command()
-@has_permissions(kick_members=True)
+@commands.has_permissions(kick_members=True)
 async def kick(ctx, member:discord.Member=None, *, reason=None):
     if member is None:
         await ctx.send("Please mention a user to kick")
@@ -160,7 +159,7 @@ async def userinfo_error(ctx, error):
         await ctx.send("Missing Arguments : Member Missing")
 	
 @bot.command()
-@has_permissions(manage_nicknames=True)     
+@commands.has_permissions(manage_nicknames=True)     
 async def setnick(ctx, member: discord.Member, *, nickname):
     await member.edit(nick=f"{nickname}")
     await ctx.send(f'Nickname Changed For {member.mention} ') 
