@@ -4,6 +4,7 @@ import asyncio
 import time
 from discord.ext import commands, tasks
 from itertools import cycle
+from discord.ext.commands import has_permissions
 
 bot = commands.Bot(command_prefix='mb-')
 
